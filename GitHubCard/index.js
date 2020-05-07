@@ -83,6 +83,17 @@ function userCardMaker(user) {
   const userFollowing = document.createElement('p')
   const userBio = document.createElement('p')
 
+  //structure
+  userCard.appendChild(userImg)
+  userCard.appendChild(userInfo)
+  userInfo.appendChild(userH3)
+  userInfo.appendChild(userName)
+  userInfo.appendChild(userLocation)
+  userInfo.appendChild(userProfile)
+  userInfo.appendChild(userFollowers)
+  userInfo.appendChild(userFollowing)
+  userInfo.appendChild(userBio)
+
   //add classes
   userCard.classList.add('card')
   userInfo.classList.add('card-info')
@@ -93,14 +104,14 @@ function userCardMaker(user) {
   userImg.src = user["avatar_url"]
   userH3.textContent = user["name"]
   userName.textContent = user["login"]
-  userLocation.textContent = user["location"]
-  userProfile.textContent = user["html_url"]
-  userFollowers.textContent = user["followers_url"].length
-  userFollowing.textContent = user["following_url"].length
-  userBio.textContent = user["bio"]
+  userLocation.textContent = `Location: ${user["location"]}`
+  userProfile.textContent = `Profile: ${user["html_url"]}`
+  userFollowers.textContent = `Followers: ${user["followers_url"].length}`
+  userFollowing.textContent = `Following ${user["following_url"].length}`
+  userBio.textContent = `Bio: ${user["bio"]}`
 
-  //structure
   
+
 }
 /*
   List of LS Instructors Github username's:
