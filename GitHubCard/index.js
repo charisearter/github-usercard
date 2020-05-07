@@ -28,22 +28,12 @@
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
-const cards = document.querySelector('.cards');
+const cards = document.querySelector(".cards");
 
-function getCard(gitHubName) {
-axios.get(`https://api.github.com/users/${gitHubName}`)
-.then(response => {
-  const userInfo = document.createElement('p');
-  userInfo.textContent = response.data;
-  cards.appendChild(userInfo);
-})
-.catch(error => {
-  console.log('No user by that name')
-})
-.finally(() => {
-  console.log('done')
-})
-}//ends get Card function
+// function getCard(gitHubName) {
+// axios.get(`https://api.github.com/users/${gitHubName}`)
+
+// }//ends get Card function
 
 //test
 //console.log(getCard(charisearter))
@@ -100,7 +90,17 @@ function userCardMaker(user) {
   userName.classList.add('username')
   
   //add textcontent
+  userImg.src = user["avatar_url"]
+  userH3.textContent = user["name"]
+  userName.textContent = user["login"]
+  userLocation.textContent = user["location"]
+  userProfile.textContent = user["html_url"]
+  userFollowers.textContent = user["followers_url"].length
+  userFollowing.textContent = user["following_url"].length
+  userBio.textContent = user["bio"]
 
+  //structure
+  
 }
 /*
   List of LS Instructors Github username's:
