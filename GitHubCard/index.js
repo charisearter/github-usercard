@@ -4,6 +4,18 @@
     https://api.github.com/users/<your name>
 */
 
+// axios.get('https://api.github.com/users/charisearter')
+// .then(response => {
+//   const me = response.data
+//   console.log(me)
+// })
+// .catch(error => {
+//   console.log('Nope!')
+// })
+// .finally(() => {
+//   console.log('finished')
+// })
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -16,6 +28,25 @@
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
+const cards = document.querySelector('.cards');
+
+function getCard(gitHubName) {
+axios.get(`https://api.github.com/users/${gitHubName}`)
+.then(response => {
+  const userInfo = document.createElement('p');
+  userInfo.textContent = response.data;
+  cards.appendChild(userInfo);
+})
+.catch(error => {
+  console.log('No user by that name')
+})
+.finally(() => {
+  console.log('done')
+})
+}//ends get Card function
+
+//test
+//console.log(getCard(charisearter))
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -28,7 +59,7 @@
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+// const followersArray = [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
