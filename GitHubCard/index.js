@@ -80,7 +80,28 @@ axios.get(`https://api.github.com/users/${gitHubName}`)
       </div>
     </div>
 */
+function userCardMaker(user) {
+  //set up elements
+  const userCard = document.createElement('div')
+  const userImg = document.createElement('img')
+  const userInfo = document.createElement('div')
+  const userH3 = document.createElement('h3')
+  const userName = document.createElement('p')
+  const userLocation = document.createElement('p')
+  const userProfile = document.createElement('a')
+  const userFollowers = document.createElement('p')
+  const userFollowing = document.createElement('p')
+  const userBio = document.createElement('p')
 
+  //add classes
+  userCard.classList.add('card')
+  userInfo.classList.add('card-info')
+  userH3.classList.add('name')
+  userName.classList.add('username')
+  
+  //add textcontent
+
+}
 /*
   List of LS Instructors Github username's:
     tetondan
