@@ -1,8 +1,8 @@
-/*
-  STEP 1: using axios, send a GET request to the following URL
-    (replacing the placeholder with your Github name):
-    https://api.github.com/users/<your name>
-*/
+// /*
+//   STEP 1: using axios, send a GET request to the following URL
+//     (replacing the placeholder with your Github name):
+//     https://api.github.com/users/<your name>
+// */
 
 // axios.get('https://api.github.com/users/charisearter')
 // .then(response => {
@@ -28,15 +28,25 @@
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
-const cards = document.querySelector(".cards");
+let cardEntry = document.querySelector('.cards')
 
-// function getCard(gitHubName) {
-// axios.get(`https://api.github.com/users/${gitHubName}`)
+function getCard(gitHubName) {
+axios.get(`https://api.github.com/users/${gitHubName}`)
+.then((response) => {
+  //use the userCardMaker function to make user cards and append to DOM
+  let theUser = response.data;
+    cardEntry.appendChild(userCardMaker(theUser));
+  })
+.catch(error => {
+  alert('There is no user by that name.')
+})
+.finally(() => {
+  console.log('Done.')
+})
 
-// }//ends get Card function
+}//ends get Card function
 
 //test
-//console.log(getCard(charisearter))
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -49,7 +59,16 @@ const cards = document.querySelector(".cards");
     user, and adding that card to the DOM.
 */
 
-// const followersArray = [];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
+
+followersArray.forEach(item => {
+  axios.get(`https://api.github.com/users/${item}`)
+  .then(response => {
+    let followerInfo = response.data;
+    cardEntry.appendChild(userCardMaker(followerInfo));
+  })
+});
+console.log(followersArray);
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -106,13 +125,13 @@ function userCardMaker(user) {
   userName.textContent = user["login"]
   userLocation.textContent = `Location: ${user["location"]}`
   userProfile.textContent = `Profile: ${user["html_url"]}`
-  userFollowers.textContent = `Followers: ${user["followers_url"].length}`
-  userFollowing.textContent = `Following ${user["following_url"].length}`
+  userFollowers.textContent = `Followers: ${user.followers}`
+  userFollowing.textContent = `Following ${user.following}`
   userBio.textContent = `Bio: ${user["bio"]}`
 
-  
-
+  return userCard
 }
+
 /*
   List of LS Instructors Github username's:
     tetondan
