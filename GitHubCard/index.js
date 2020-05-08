@@ -117,7 +117,7 @@ function userCardMaker(user) {
   userH3.textContent = user["name"]
   userName.textContent = user["login"]
   userLocation.textContent = `Location: ${user["location"]}`
-  userLink.href = user["html_url"]
+  userLink.href= user.html_url
   userProfile.textContent = `Profile: ${userLink}`
   userFollowers.textContent = `Followers: ${user.followers}`
   userFollowing.textContent = `Following ${user.following}`
