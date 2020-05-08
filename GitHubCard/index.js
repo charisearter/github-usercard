@@ -89,7 +89,8 @@ function userCardMaker(user) {
   const userH3 = document.createElement('h3')
   const userName = document.createElement('p')
   const userLocation = document.createElement('p')
-  const userProfile = document.createElement('a')
+  const userProfile = document.createElement('p')
+  const userLink = document.createElement('a')
   const userFollowers = document.createElement('p')
   const userFollowing = document.createElement('p')
   const userBio = document.createElement('p')
@@ -116,7 +117,8 @@ function userCardMaker(user) {
   userH3.textContent = user["name"]
   userName.textContent = user["login"]
   userLocation.textContent = `Location: ${user["location"]}`
-  userProfile.textContent = `Profile: ${user["html_url"]}`
+  userLink.href = user["html_url"]
+  userProfile.textContent = `Profile: ${userLink}`
   userFollowers.textContent = `Followers: ${user.followers}`
   userFollowing.textContent = `Following ${user.following}`
   userBio.textContent = `Bio: ${user["bio"]}`
